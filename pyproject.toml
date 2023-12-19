@@ -1,0 +1,59 @@
+[build-system]
+requires = ["setuptools>=61.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cnppo"
+version = "1.0.0"
+authors = [{name = "Jakob Hollenstein", email = "jakob.hollenstein@gmail.com"}]
+license = {text = "MIT"}
+description = "Colored Noise for PPO"
+readme = "README.md"
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+# urls = {Homepage = "TODO"}
+dependencies = [
+	     "pink-noise-rl",
+	     "stable-baselines3",
+	     "gymnasium",
+	     # for the experiments
+	     # "setuptools==65.5.0",
+	     # "wheel==0.40.0",
+	     # "gym==0.21.0",
+	     # "dm2gym",
+	     # "d4rl==1.1",
+	     # "dm-control==1.0.12",
+	     # "stable-baselines3[extra]==1.8.0",
+	     # "sb3-contrib==1.8.0",
+	     # "tensorboard==2.13.0",
+	     ]
+
+[tool.setuptools]
+include-package-data = false
+
+[tool.setuptools.packages.find]
+exclude = ["tests"]
+namespaces = false
+
+[tool.black]
+line-length = 120
+target-version = ['py38']
+include = '''
+    .*cnppo/.*\.pyi?$
+    | .*scripts/.*\.pyi?$
+    | .*tests/.*\.pyi?$
+'''
+
+[tool.ruff]
+# Enable pycodestyle (`E`) and Pyflakes (`F`) codes by default.
+select = ["E", "F"]
+# Allow lines to be as long as 120 characters.
+line-length = 120
